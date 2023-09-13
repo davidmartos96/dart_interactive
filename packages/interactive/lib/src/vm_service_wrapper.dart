@@ -13,15 +13,19 @@ class VmServiceWrapper {
   });
 
   static Future<VmServiceWrapper> create() async {
+    print("Getting service info");
     final serverUri = (await Service.getInfo()).serverUri;
+    print("Got service info: $serverUri");
     if (serverUri == null) {
       throw Exception('Cannot find serverUri for VmService. '
           'Ensure you run like `dart run --enable-vm-service path/to/your/file.dart`');
     }
 
+    print("connecting to service");
     final vmService = await vmServiceConnectUri(
         convertToWebSocketUrl(serviceProtocolUrl: serverUri).toString(),
         log: _Log());
+    print("connected to service");
 
     return VmServiceWrapper._(vmService: vmService);
   }
