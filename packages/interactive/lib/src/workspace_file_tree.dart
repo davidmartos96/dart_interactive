@@ -11,6 +11,7 @@ class WorkspaceFileTree {
   WorkspaceFileTree._(this.directory);
 
   static Future<WorkspaceFileTree> create(String directory) async {
+    print("preparing workspace");
     await _prepare(directory);
     print('Workspace: $directory');
     return WorkspaceFileTree._(directory);

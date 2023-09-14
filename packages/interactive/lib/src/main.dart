@@ -7,6 +7,7 @@ import 'package:interactive/src/workspace_file_tree.dart';
 import 'package:logging/logging.dart';
 
 Future<void> main(List<String> args) {
+  print("LIB MAIN ${args.join(' ')}");
   final parsedArgs = _parseArgs(args);
 
   return run(
