@@ -5,6 +5,12 @@ import 'package:interactive/src/main.dart' as lib_main;
 
 // ref: https://github.com/dart-lang/pub/issues/3291#issuecomment-1019880145
 Future<void> main(List<String> rawArgs) async {
+  print("NEW ENTRY POINT MAIN ${rawArgs.join(' ')}");
+
+  await lib_main.main(rawArgs);
+}
+
+Future<void> oldmain(List<String> rawArgs) async {
   print("ENTRY POINT MAIN ${rawArgs.join(' ')}");
   if (rawArgs.firstOrNull == _vmServiceWasEnabledArg) {
     await lib_main.main(rawArgs.skip(1).toList());
